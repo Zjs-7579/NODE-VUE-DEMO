@@ -1,0 +1,15 @@
+.NewsData{
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+}
+.NewsData h1{
+  text-align: center;
+  font-size: 35px;
+}
+.NewsData span{
+  color: #888;
+}
+.NewsData span:nth-child(2n){
+  padding: 10px 15px;
+}
