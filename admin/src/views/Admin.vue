@@ -30,8 +30,17 @@
                 <el-dropdown>
                     <i class="el-icon-setting" style="margin-right: 15px"></i>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item>查看</el-dropdown-item>
-                        <el-dropdown-item>退出</el-dropdown-item>
+                        <el-dropdown-item>
+                            <router-link to="/admin/adminpersonage">
+                                查看
+                            </router-link>
+                           
+                        </el-dropdown-item>
+                        <el-dropdown-item>
+                            <span  @click="Quit">
+                                 退出
+                            </span>
+                        </el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
                 <span>{{$store.state.User.username}}</span>
@@ -52,6 +61,12 @@
           return{
 
           }
+        },
+         methods: {
+            Quit(){
+                sessionStorage.clear();
+                this.$router.push({path: `/login`})
+            }
         }
        
     }

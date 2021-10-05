@@ -2,14 +2,17 @@
   <div>
     <ClassList />
     <TagClass />
-    <br>
     <el-button type="primary" class="btn" @click="UpNews">确认提交</el-button>
+    <DataGraph/>
+    <br>
+    
   </div>
 </template>
 
 <script>
 import ClassList from "./AdminClass/ClassList.vue";
 import TagClass from "./AdminClass/TagClass.vue";
+import DataGraph from "./AdminClass/DataGraph.vue";
 import { mapState } from "vuex";
 export default {
   data() {
@@ -21,7 +24,8 @@ export default {
   },
   components: {
     ClassList,
-    TagClass
+    TagClass,
+    DataGraph
   },
   methods: {
     UpNews() {
@@ -95,6 +99,6 @@ export default {
 
 <style scoped>
 .btn {
-  margin: 0 30px;
+  margin: 25px 30px;
 }
 </style>

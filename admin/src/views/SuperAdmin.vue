@@ -52,7 +52,10 @@
                             </router-link>     
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            退出
+                            <span  @click="Quit">
+                                 退出
+                            </span>
+                            
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
@@ -84,12 +87,12 @@
 
           }
         },
-        // async created() {
-        //     const newsClassTag =  await this.$http.get('newsclasstag');
-        //     if(newsClassTag.data.code === 200){
-        //         this.$store.dispatch('getNewsListAll', newsClassTag.data.newsList)
-        //     }
-        // }
+        methods: {
+            Quit(){
+                sessionStorage.clear();
+                this.$router.push({path: `/login`})
+            }
+        }
     }
 </script>
 

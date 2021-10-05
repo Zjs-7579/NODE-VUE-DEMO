@@ -129,10 +129,10 @@
 
 <style scoped>
   .classlist{
-    margin: 30px;
+    margin: 0px 30PX;
   }
   .el-tag + .el-tag {
-    margin: 10px;
+    margin: 0 10px;
   }
   .button-new-tag {
     margin-left: 10px;

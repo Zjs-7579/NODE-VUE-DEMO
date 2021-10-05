@@ -91,7 +91,6 @@
 
             },
             handleData(value) {
-                console.log(value)
                 
                 let data = [];
                 for (let item in value){
