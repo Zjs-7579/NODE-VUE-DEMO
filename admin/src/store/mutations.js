@@ -84,41 +84,7 @@ export default {
 
 /*                                         新闻所有分类的文章                        */ 
     get_NewsListAll(state, res){
-      state.NewsListAll = res;
-      let data = [];
-      for (let item in res){
-        data.push(res[item])
-      };
-
-      let list = [];
-      for(let i in data){
-        for(let j of data[i]){
-          list.push(j)
-        }
-      };
-      state.NewsList = list;
-
-
-
-      const Examine = state.NewsList.filter(item=> {
-        return item.flag === '1'
-      });
-      //console.log(Examine);
-      state.ExamineList = Examine;
-
-
-
-      const Success = list.filter(item=> {
-        return item.flag === '2'
-      });
-      state.SuccessList = Success;
-
-
-
-      const Defeated = list.filter(item=> {
-        return item.flag === '3'
-      });
-      state.DefeatedList = Defeated;
+      state.NewsListAll = res
      
     },
 

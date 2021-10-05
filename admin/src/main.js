@@ -10,6 +10,15 @@ Vue.use(ElementUI);
 Vue.config.productionTip = false;
 Vue.prototype.$http = http;
 
+router.beforeEach((to,from,next)=>{
+  if(to.path == '/login' || to.path == '/register'){
+    next();
+  }else{
+    alert('您还没有登录，请先登录');
+    next('/login');
+  }
+})
+
 new Vue({
   router,
   store,

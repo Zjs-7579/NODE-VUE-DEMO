@@ -1,6 +1,6 @@
 export default {
   //获取用户信息
-  getUser({commit}, res) {
+  getUser({commit}, res) { 
     let data = res.data.result
     commit('get_user', data)
   },

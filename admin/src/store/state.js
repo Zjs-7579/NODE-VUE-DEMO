@@ -1,34 +1,35 @@
 export default {
   //用户信息
-  User: [],
+  User: JSON.parse( sessionStorage.getItem('User') || '[]' ),
 
   //管理员用户列表
-  UserList: [],
+  UserList: JSON.parse( sessionStorage.getItem('UserList') || '[]' ),
 
   //新闻标签信息
-  TagNews: [],
+  TagNews: JSON.parse( sessionStorage.getItem('TagNews') || '[]' ),
 
   //新闻分类信息
-  NewsClass: [],
+  NewsClass: JSON.parse( sessionStorage.getItem('NewsClass') || '[]' ),
 
   //新闻发布开始状态
   StartText: [],
 
   //所有新闻分类文章,未综合
-  NewsListAll: [],
+  NewsListAll: JSON.parse( sessionStorage.getItem('NewsListAll') || '{}' ),
+  // NewsListAll: JSON.parse( sessionStorage.getItem('NewsListAll') || '{}' ),
 
   //新闻所有列表
-  NewsList: [],
+  NewsList: JSON.parse( sessionStorage.getItem('NewsList') || '[]' ),
 
   //新闻已发布的新闻
   //SuccessNewsList: [],
 
   //未审阅的数据， flag为 1 
-  ExamineList: [],
+  ExamineList: JSON.parse( sessionStorage.getItem('ExamineList') || '[]' ),
 
   //审阅成功的数据， flag为 2
-  SuccessList: [],
+  SuccessList: JSON.parse( sessionStorage.getItem('SuccessList') || '[]' ),
 
   //未审阅失败的数据， flag为 3
-  DefeatedList: [],
+  DefeatedList: JSON.parse( sessionStorage.getItem('DefeatedList') || '[]' ),
 }

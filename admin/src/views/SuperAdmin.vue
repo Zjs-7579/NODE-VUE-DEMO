@@ -46,8 +46,14 @@
                 <el-dropdown>
                     <i class="el-icon-setting" style="margin-right: 15px"><el-badge is-dot:true></el-badge></i>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item><el-badge is-dot>查看</el-badge></el-dropdown-item>
-                        <el-dropdown-item>退出</el-dropdown-item>
+                        <el-dropdown-item>
+                            <router-link to="/superadmin/personage">
+                                查看
+                            </router-link>     
+                        </el-dropdown-item>
+                        <el-dropdown-item>
+                            退出
+                        </el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
                 <span>{{$store.state.User.username}}</span>
