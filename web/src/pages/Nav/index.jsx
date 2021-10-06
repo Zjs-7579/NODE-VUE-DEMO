@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Menu, Input, Space } from 'antd';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { BankOutlined} from '@ant-design/icons';
 import StorageTag from '../../utils/StorageTag'
 import './index.css'
@@ -30,21 +30,18 @@ export default class Nav extends Component {
 
   render() {
     const NavTag = StorageTag.getTag()
-    const { current } = this.state;
-    //console.log(this)
-    //console.log(Nav)
     return (
       <div className="nav">
         <div style={{flex: '6'}}>
-          <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
+          <Menu onClick={this.handleClick}  mode="horizontal">
             <Menu.Item key="home" icon={<BankOutlined/>}>
-              <Link  to="/home" >首页</Link>
+              <NavLink  to="/home" >首页</NavLink>
             </Menu.Item>
             {
               NavTag.map(item => {
                 return (
                   <Menu.Item key={item.news_className}>
-                    <Link  to={'/'+ item.news_className} >{item.classify_name}</Link>
+                    <NavLink  to={'/'+ item.news_className} >{item.classify_name}</NavLink>
                   </Menu.Item>
                 )
               })

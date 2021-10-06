@@ -49,7 +49,7 @@ export default class App extends Component {
     return (     
       <div>
           <Nav {...this.props}></Nav>
-        <div>
+        <div style={{margin: '10px 0'}}>
           <Switch>
             <Route path="/home" component={Home}></Route>
             {

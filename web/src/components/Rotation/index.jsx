@@ -66,7 +66,7 @@ export default class Rotation extends Component {
               return (
                 <div key={item.id} style={contentStyle} className="Carousel">
                   <h3>
-                    <Link to={'/news/'+item.news_class+'?Id='+item.id}>{item.title}</Link> 
+                    <Link to={'/news/'+item.news_class+'?Id='+item.id} style={{color: '#fff',fontSize: '35px'}}>{item.title}</Link> 
                  </h3>
                 </div>
               )

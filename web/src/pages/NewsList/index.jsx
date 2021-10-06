@@ -21,7 +21,7 @@ export default class NewsList extends Component {
       return item.flag === '2'
     })
     return (
-      <div style={{textIndent: '1.5rem'}}>
+      <div style={{textIndent: '1.5rem',minHeight:'565px'}}>
         <h1>新闻列表</h1>
         <List
           itemLayout="horizontal"
