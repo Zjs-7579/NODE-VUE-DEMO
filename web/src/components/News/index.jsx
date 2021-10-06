@@ -23,7 +23,7 @@ export default class index extends Component {
     //console.log(result)
      //console.log(result[0].end_time)
     return (
-      <div className="NewsData">
+      <div className="NewsData" style={{minHeight: '565px'}}>
         <h1>{result[0].title}</h1>
         <hr />
         <p><span>{data}</span><span>|</span><span>来源：{result[0].source}</span><span>|</span><span>编辑：{result[0].edit}</span></p>
