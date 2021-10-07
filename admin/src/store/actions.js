@@ -74,6 +74,13 @@ export default {
   getNewsListAll({commit}, res){
     commit('get_NewsListAll', res);
   },
+
+  getNewsState({commit}, res){
+    
+    //console.log(res)
+    commit('get_NewsState', res)
+
+  },
 /*                                         审阅新闻的文章成功                        */ 
   UpNewsFlag({commit}, res){
     console.log(res)

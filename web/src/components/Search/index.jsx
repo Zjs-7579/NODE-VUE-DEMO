@@ -38,7 +38,8 @@ export default class index extends Component {
     // console.log(NewsList)
     // console.log(this.props)
     //console.log(this.state.News)
-    const result = this.state.News;
+    const resultData = this.state.News;
+    let result = Array.from(resultData)
     return (
       <div style={{textIndent: '1.5rem'}}>
         <h1>新闻列表</h1>

@@ -3,7 +3,6 @@ const db = require('../moudule//db.js')
 async function login(req, res) {
 	const sql = 'SELECT * FROM admin';
 	const paramse = [];
-	
 	await db(sql, paramse, (result)=>{
 		const user = result.filter((item)=>{
 			return item.username === req.body.username &&

@@ -87,7 +87,12 @@ export default {
       state.NewsListAll = res
      
     },
-
+    get_NewsState(state, res){
+      state.NewsList = res.NewsList;
+      state.ExamineList = res.ExamineList;
+      state.SuccessList = res.SuccessList;
+      state.DefeatedList = res.DefeatedList;
+    },
 
     /*                                         审阅新闻的文章成功                        */ 
     Up_NewsFlag(state, res){

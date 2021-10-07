@@ -37,7 +37,8 @@ export default class index extends Component {
   }
 
   render() {
-    const result = this.state.News;
+    const resultData = this.state.News;
+    let result = Array.from(resultData)
     return (
       <div className="site-card-wrapper">
         <h1 style={{fontSize: '25px',  fontWeight:'bold',padding: '15px 0'}}>热点新闻</h1>

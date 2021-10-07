@@ -43,7 +43,8 @@ export default class App extends Component {
  
 
   render() {
-    const NavTag = StorageTag.getTag()
+    const NavTagData = StorageTag.getTag()
+    let NavTag = Array.from(NavTagData);
     //console.log(NavTag)
     //console.log(this)
     return (     
@@ -53,14 +54,16 @@ export default class App extends Component {
           <Switch>
             <Route path="/home" component={Home}></Route>
             {
-              NavTag.map(item => {
-                return  <Route path={'/'+ item.news_className} component={NewsList} key={item.classify_id}></Route>
+              NavTag.map((item) => {
+                return (
+                   <Route path={"/"+ item.news_className} component={NewsList} key={item.classify_id}></Route>
+                )
           
               })
             }
              {
-              NavTag.map(item => {
-                return  <Route path={'/news/'+ item.news_className} component={News} key={item.news_className}></Route>
+              NavTag.map((item) => {
+                return  <Route path={"/news/"+ item.news_className} component={News} key={item.news_className}></Route>
         
               })
             }

@@ -55,18 +55,18 @@ export default class Rotation extends Component {
   render() {
     
     const {News} = this.state
- 
-    //console.log(this.state.News)
+    let NewsData = Array.from(News)
+    //console.log(NewsData)
     return (
       
       <div>
         <Carousel autoplay>
           {
-            News.map(item=>{
+            NewsData.map((data)=>{
               return (
-                <div key={item.id} style={contentStyle} className="Carousel">
+                <div key={data.id} style={contentStyle} className="Carousel">
                   <h3>
-                    <Link to={'/news/'+item.news_class+'?Id='+item.id} style={{color: '#fff',fontSize: '35px'}}>{item.title}</Link> 
+                    <Link to={"/news/" + data.news_class + '?Id=' + data.id} style={{color: '#fff',fontSize: '35px'}}>{data.title}</Link> 
                  </h3>
                 </div>
               )

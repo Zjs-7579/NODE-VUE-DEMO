@@ -17,9 +17,10 @@ export default class NewsList extends Component {
   }
   render() {
     
-    const result = this.state.News.filter(item=>{
+    const resultData = this.state.News.filter(item=>{
       return item.flag === '2'
     })
+    let result = Array.from(resultData);
     return (
       <div style={{textIndent: '1.5rem',minHeight:'565px'}}>
         <h1>新闻列表</h1>
@@ -29,7 +30,7 @@ export default class NewsList extends Component {
           renderItem={item => (
             <List.Item>
               <List.Item.Meta
-                title={<Link to={'/news/'+item.news_class+'?Id='+item.id}>{item.title}</Link>}
+                title={<Link to={"/news/"+item.news_class+'?Id='+item.id}>{item.title}</Link>}
               />
             </List.Item>
           )}

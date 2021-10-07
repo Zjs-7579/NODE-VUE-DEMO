@@ -66,7 +66,43 @@
                     sessionStorage.setItem('TagNews', JSON.stringify(tagclass.data.result))
                     sessionStorage.setItem('NewsListAll', JSON.stringify(newsClassTag.data.newsList))
                     sessionStorage.setItem('UserList', JSON.stringify(userList.data.userlist))
-                    this.handleData(newsClassTag.data.newsList)
+                    // this.handleData(newsClassTag.data.newsList)
+                    const value = this.$store.state.NewsListAll
+                     let data = [];
+                    for (let item in value){
+                        data.push(value[item])
+                    };
+                    let list = [];
+                    for(let i in data){
+                        for(let j of data[i]){
+                        list.push(j)
+                        }
+                    };
+                    //state.NewsList = list;
+                    const Examine = list.filter(item=> {
+                        return item.flag === '1'
+                    });
+                    //console.log(Examine);
+                    //state.ExamineList = Examine;
+                    const Success = list.filter(item=> {
+                        return item.flag === '2'
+                    });
+                    //state.SuccessList = Success;
+                    const Defeated = list.filter(item=> {
+                        return item.flag === '3'
+                    });
+                    //console.log(Defeated);
+                    //state.DefeatedList = Defeated;
+                    //console.log(list)
+                    const DataList = {NewsList: list, ExamineList: Examine, SuccessList: Success, DefeatedList: Defeated}
+                    this.$store.dispatch('getNewsState', DataList)
+                    //console.log(value)
+                    sessionStorage.setItem('NewsList', JSON.stringify(list))
+                    sessionStorage.setItem('ExamineList', JSON.stringify(Examine))
+                    sessionStorage.setItem('SuccessList', JSON.stringify(Success))
+                    sessionStorage.setItem('DefeatedList', JSON.stringify(Defeated))
+
+
                     this.$message({
                         message: '恭喜你，登录成功',
                         type: 'success'
@@ -90,47 +126,9 @@
                 }
 
             },
-            handleData(value) {
-                
-                let data = [];
-                for (let item in value){
-                    data.push(value[item])
-                };
-
-                let list = [];
-                for(let i in data){
-                    for(let j of data[i]){
-                    list.push(j)
-                    }
-                };
-                sessionStorage.setItem('NewsList', JSON.stringify(list))
-                //state.NewsList = list;
-
-
-
-                const Examine = list.filter(item=> {
-                    return item.flag === '1'
-                });
-                //console.log(Examine);
-                sessionStorage.setItem('ExamineList', JSON.stringify(Examine))
-                //state.ExamineList = Examine;
-
-
-
-                const Success = list.filter(item=> {
-                    return item.flag === '2'
-                });
-                sessionStorage.setItem('SuccessList', JSON.stringify(Success))
-                //state.SuccessList = Success;
-
-
-
-                const Defeated = list.filter(item=> {
-                    return item.flag === '3'
-                });
-                sessionStorage.setItem('DefeatedList', JSON.stringify(Defeated))
-                //state.DefeatedList = Defeated;
-            }
+            // handleData(value) {
+               
+            // }
         }
     }
 </script>
