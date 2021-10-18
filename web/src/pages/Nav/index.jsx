@@ -30,7 +30,7 @@ export default class Nav extends Component {
   render() {
     const {search} = this.state;
     const NavTagData = StorageTag.getTag()
-    let NavTag = Array.from(NavTagData);
+    let NavTag = Array.from(NavTagData).filter(item=>{return item.flag === '2'});
     return (
       <div className="nav">
         <div style={{flex: '6'}}>

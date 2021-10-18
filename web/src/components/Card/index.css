@@ -1,6 +1,7 @@
 .site-card-wrapper{
   width: 85%;
   margin: 10px auto;
- 
 }
-
+.site-card-wrapper img {
+  height: 400px;
+}

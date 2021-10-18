@@ -16,11 +16,14 @@ export default class NewsList extends Component {
     this.setState({News})
   }
   render() {
-    
+    let result
     const resultData = this.state.News.filter(item=>{
       return item.flag === '2'
     })
-    let result = Array.from(resultData);
+    
+    result = Array.from(resultData);
+   
+
     return (
       <div style={{textIndent: '1.5rem',minHeight:'565px'}}>
         <h1>新闻列表</h1>

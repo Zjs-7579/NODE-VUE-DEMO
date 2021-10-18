@@ -21,7 +21,6 @@ export default class App extends Component {
 
   async componentDidMount(){
 
-
     const Tag = await http.get('/newsclass')
     const List = await http.get('/newsClassTag')
     if(List.data.code === 200&&Tag.data.code === 200){

@@ -9,7 +9,7 @@ async function addnewsclass(req, res) {
 						title VARCHAR(255),edit VARCHAR(255),source VARCHAR(255),
 						tag VARCHAR(255),start_time VARCHAR(255),
 	 					end_time VARCHAR(255),flag VARCHAR(255),pinned VARCHAR(255),
-						context VARCHAR(10000),reviewer VARCHAR(255))`;
+						image VARCHAR(10000),context VARCHAR(10000),reviewer VARCHAR(255))`;
 		await db(setupsql, paramse, (result)=>{
 			if (result) {
 			console.log(req.body.news_class+'创建表成功')	
@@ -53,9 +53,10 @@ async function addnewsclass(req, res) {
 
 
 async function addnews(req, res) {
+			//console.log(req.body)
 			let tag = req.body.tag.toString();
-			let sql = `INSERT INTO ${req.body.news_class}(id, news_class, title, edit, source, tag, start_time, end_time, flag, pinned, context, reviewer) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)`;
-			let paramse = [req.body.id, req.body.news_class, req.body.title, req.body.edit, req.body.source, tag, req.body.start_time, '', req.body.flag, req.body.pinned?'1':'0', req.body.context, req.body.username];
+			let sql = `INSERT INTO ${req.body.news_class}(id, news_class, title, edit, source, tag, start_time, end_time, flag, pinned, image, context, reviewer) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+			let paramse = [req.body.id, req.body.news_class, req.body.title, req.body.edit, req.body.source, tag, req.body.start_time, '', req.body.flag, req.body.pinned?'1':'0',req.body.imageUrl, req.body.context, req.body.username];
 			
 			//let sql = `INSERT INTO ${req.body.news_class}(tag) VALUES(?)`;
 			

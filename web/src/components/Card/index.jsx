@@ -26,7 +26,7 @@ export default class index extends Component {
 
 
     const res = Data.filter(item=>{
-      return item.pinned === '0'
+      return item.pinned === '1'&&item.flag === '2'
     })
 
     if(res.length>8){
@@ -50,7 +50,7 @@ export default class index extends Component {
                     <Card
                       hoverable
                       style={{ width: 275 }}
-                      cover={<img alt="example" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0198695bfcc585a80121ab5dd9d66d.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1635947772&t=fbe6ed69921e2013a5b1cc8294790597" />}
+                      cover={<img alt="example" src={item.image} />}
                     >
                       <Link to={'/news/'+item.news_class+'?Id='+item.id}><Meta title={item.title} /></Link>
                     

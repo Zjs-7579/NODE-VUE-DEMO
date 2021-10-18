@@ -6,7 +6,9 @@ async function newsClassTag(req, res){
 	const paramse = [];
 	await db(sql, paramse, (result)=>{
 		for(let item of result){
-			newsClass(res, item, result.length)
+			if(item.flag === '2'){
+				newsClass(res, item, result.length)
+			}
 		}
 	});
 	

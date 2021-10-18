@@ -28,7 +28,7 @@ export default class Rotation extends Component {
 
 
     const res = Data.filter(item=>{
-      return item.pinned === '1'
+      return item.pinned === '1'&&item.flag === '2'
     })
     let Number = []
     for(let i=0;i<4;i++){
@@ -36,6 +36,7 @@ export default class Rotation extends Component {
 
       Number.push(num)
     }
+    console.log(Number)
     //Math.floor(Math.random()*10);
 
    let List = [];
@@ -57,12 +58,20 @@ export default class Rotation extends Component {
     const {News} = this.state
     let NewsData = Array.from(News)
     //console.log(NewsData)
+    // var imgReg = /http.*?(?:.jpg|\/jpg)/gi;
+    // let arr =[]
+    // for (let i of NewsData) {
+    //   arr.push(i.context.match(imgReg)[0])
+      
+    // }
+    // console.log(arr)
+
     return (
       
       <div>
         <Carousel autoplay>
           {
-            NewsData.map((data)=>{
+            NewsData.map((data, index)=>{
               return (
                 <div key={data.id} style={contentStyle} className="Carousel">
                   <h3>

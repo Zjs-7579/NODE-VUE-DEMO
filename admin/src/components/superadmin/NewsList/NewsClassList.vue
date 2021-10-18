@@ -43,14 +43,14 @@
 
 
 <div class="pagination">
-<el-pagination
-  background
-  :small="false"
-  layout="prev, pager, next"
-  :page-size="9"
-  :total="sumPages"
-  @current-change="handleCurrentChange">
-</el-pagination>
+  <el-pagination
+    background
+    :small="false"
+    layout="prev, pager, next"
+    :page-size="9"
+    :total="sumPages"
+    @current-change="handleCurrentChange">
+  </el-pagination>
 </div>
 
 

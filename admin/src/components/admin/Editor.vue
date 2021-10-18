@@ -28,14 +28,17 @@ export default {
   },
   components: { VueEditor },
   methods: {
+    // onSubmit() {
+    //   console.log(this.form)
+    // },
     async onSubmit() {
       const id = Math.random().toString(36).substr(3);
-      const {title,news_class,edit,source,pinned,tag } = this.form;
+      const {title,news_class,edit,source,pinned,imageUrl,tag } = this.form;
       let start_time = Date.now();
       const context = this.context;
       const username = this.User.id;    
       const dd = this.NewsClass.filter((item)=>{return item.news_className === news_class});
-      const data =  {id, title, news_class, edit, source, tag, start_time, pinned, context, username, newsclass_flag: dd[0].flag, flag: '1'};
+      const data =  {id, title, news_class, edit, source, tag, start_time, pinned, imageUrl, context, username, newsclass_flag: dd[0].flag, flag: '1'};
       
       console.log(data);
       if(dd[0].flag === '1'){  
@@ -54,11 +57,15 @@ export default {
       
       
       this.FromEmpty();
+      this.form.imageUrl = '';
+      this.form.pinned = false;
       this.context = ''
       
     },
     onEmpty() {
       this.FromEmpty();
+      this.form.imageUrl = '';
+      this.form.pinned = false;
       this.context = ''
     }
   }

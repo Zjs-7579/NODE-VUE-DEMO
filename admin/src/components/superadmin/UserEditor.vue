@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-table :data="UserList" stripe style="width: 100%">
+    <el-table :data="UserListData" stripe class="table">
       <el-table-column type="index" width="80"> </el-table-column>
       <el-table-column prop="id" label="ID" width="150"> </el-table-column>
       <el-table-column prop="username" label="用户名" width="150">
@@ -11,11 +11,13 @@
       </el-table-column>
       <el-table-column prop="root_flag" label="权限" width="150"></el-table-column>
       <el-table-column align="right">
-      <template slot="header">
+        <!-- eslint-disable-next-line -->
+      <template slot="header" slot-scope="scope">
         <el-input
           v-model="search"
           size="mini"
-          placeholder="输入关键字搜索"/>
+          placeholder="输入关键字搜索"
+          @keyup.enter.native="SearchResult"/>
       </template>
       <template slot-scope="scope">
         <el-button
@@ -82,6 +84,20 @@
    </el-drawer>
   </div>
 </el-drawer>
+
+
+<div class="pagination">
+  <el-pagination
+    background
+    :small="false"
+    layout="prev, pager, next"
+    :page-size="9"
+    :total="sumPages"
+    @current-change="handleCurrentChange">
+  </el-pagination>
+</div>
+
+
   </div>
 </template>
 
@@ -109,12 +125,44 @@ export default {
        // 用户列表
       ReviewerNewsList: [],
       //里层文章详情
-      context: []
+      context: [],
+      //搜索后的用户列表
+      NewsUserList: [],
+      //用户数量
+      page: 0
       
     };
   },
   computed: {
-    ...mapState(['UserList', 'NewsList'])
+    ...mapState(['UserList', 'NewsList']),
+    sumPages: {
+        get() {
+
+          if (this.NewsUserList.length) {
+            return 9
+          }else{
+
+             return this.UserList.length;
+          }
+         
+        },
+        set(val) {
+          this.sumPages = val
+        }
+      },
+    UserListData: {
+      get() {
+        if(this.NewsUserList.length){
+          return this.NewsUserList
+        }else{
+          return this.UserList
+        }
+      },
+      set(val) {
+        console.log(val);
+        this.UserListData = val
+      }
+    }
   },
   components: {
     UserDrawer,
@@ -162,19 +210,47 @@ export default {
      //console.log(row);
      this.txt = true;
      this.context = row;
-   }
+   },
+   handleCurrentChange(val) {
+        console.log(`当前页: ${val}`);
+        this.page = val-1;
+        //console.log(this.page);
+      },
+   SearchResult() {
+        //console.log(this.search)
+        let res =  this.UserList.filter(item => {return !this.search || item.id.toLowerCase().includes(this.search.toLowerCase())});
+        //console.log(res);
+
+        
+        if (!res.length) {
+          this.NewsUserList = []
+        }else{
+          this.NewsUserList = res;
+        }
+
+        //console.log(this.NewsUserList)
+      }
   },
   created() {
-    this.$notify({
-          title: '提示',
-          message: '1为新闻管理员',
-          duration: 0
+     const h = this.$createElement;
+
+        this.$notify({
+          title: '友情提示',
+          message: h('span', { style: 'color: red'}, '1 是新闻发布员')
         });
   }
 };
 </script>
 
 <style scoped>
+.table{
+    width: 100%;
+    height: 530px;
+    overflow: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none; /* IE 10+ */
+    scrollbar-width: none;
+  }
   .title{
     text-indent: 1.5rem;
     color: #72767b;
@@ -190,5 +266,11 @@ export default {
   }
   ::-webkit-scrollbar {
     display: none; /* Chrome Safari */
+  }
+
+  .pagination{
+    width: 350px;    
+    margin: 5px auto;
+    
   }
 </style>

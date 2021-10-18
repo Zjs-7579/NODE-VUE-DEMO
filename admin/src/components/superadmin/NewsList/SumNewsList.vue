@@ -166,10 +166,12 @@ export default {
       }
     },
     created() {
-      this.$notify({
-          title: '新闻管理---审阅状态提示',
-          message: '1 未审阅, 2 已审阅成功, 3 撤回文章',
-          duration: 0
+
+      const h = this.$createElement;
+
+        this.$notify({
+          title: '友情提示',
+          message: h('span', { style: 'color: red'}, '1 未审阅, 2 已审阅成功, 3 撤回文章')
         });
     }
 
