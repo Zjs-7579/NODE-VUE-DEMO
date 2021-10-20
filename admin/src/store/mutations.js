@@ -45,7 +45,8 @@ export default {
 
     //数据库中获取新闻分类列表，更新新闻分类状态
     get_NewsClassList(state, data){
-      state.NewsClass = data
+      let result = data.filter(item=>{return item.flag === '2'})
+      state.NewsClass = result
     },
 
     //把新的新闻分类更新到状态里面
